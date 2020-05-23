@@ -9,7 +9,7 @@ def get_args():
     """get command-line arguments"""
 
     parser = argparse.ArgumentParser(
-        description='Gashlycrumb',
+        description='Interactive Gashlycrumb',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('-f',
@@ -35,10 +35,8 @@ def main():
         if letter == '!':
             print('Bye')
             break
-        elif letter.upper() in lookup:
-            print(lookup[letter.upper()])
-        else:
-            print('I do not know "{}".'.format(letter))
+
+        print(lookup.get(letter.upper(), f'I do not know "{letter}".'))
 
 
 # --------------------------------------------------

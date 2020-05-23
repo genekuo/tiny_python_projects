@@ -14,7 +14,7 @@ def get_args():
 
     parser.add_argument('-n',
                         '--num',
-                        metavar='int',
+                        metavar='number',
                         type=int,
                         default=10,
                         help='How many bottles')
@@ -22,9 +22,17 @@ def get_args():
     args = parser.parse_args()
 
     if args.num < 1:
-        parser.error('--num ({}) must > 0'.format(args.num))
+        parser.error(f'--num "{args.num}" must be greater than 0')
 
     return args
+
+
+# --------------------------------------------------
+def main():
+    """Make a jazz noise here"""
+
+    args = get_args()
+    print('\n\n'.join(map(verse, range(args.num, 0, -1))))
 
 
 # --------------------------------------------------
@@ -47,26 +55,18 @@ def verse(bottle):
 def test_verse():
     """Test verse"""
 
-    one = verse(1)
-    assert one == '\n'.join([
+    last_verse = verse(1)
+    assert last_verse == '\n'.join([
         '1 bottle of beer on the wall,', '1 bottle of beer,',
         'Take one down, pass it around,',
         'No more bottles of beer on the wall!'
     ])
 
-    two = verse(2)
-    assert two == '\n'.join([
+    two_bottles = verse(2)
+    assert two_bottles == '\n'.join([
         '2 bottles of beer on the wall,', '2 bottles of beer,',
         'Take one down, pass it around,', '1 bottle of beer on the wall!'
     ])
-
-
-# --------------------------------------------------
-def main():
-    """Make a jazz noise here"""
-
-    args = get_args()
-    print('\n\n'.join(map(verse, range(args.num, 0, -1))))
 
 
 # --------------------------------------------------

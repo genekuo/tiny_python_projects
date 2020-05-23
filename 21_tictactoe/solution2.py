@@ -16,7 +16,7 @@ def get_args():
     parser.add_argument('-b',
                         '--board',
                         help='The state of the board',
-                        metavar='str',
+                        metavar='board',
                         type=str,
                         default='.' * 9)
 
@@ -24,14 +24,14 @@ def get_args():
                         '--player',
                         help='Player',
                         choices='XO',
-                        metavar='str',
+                        metavar='player',
                         type=str,
                         default=None)
 
     parser.add_argument('-c',
                         '--cell',
                         help='Cell 1-9',
-                        metavar='int',
+                        metavar='cell',
                         type=int,
                         choices=range(1, 10),
                         default=None)
@@ -56,11 +56,9 @@ def main():
 
     args = get_args()
     board = list(args.board)
-    player = args.player
-    cell = args.cell
 
-    if player and cell:
-        board[cell - 1] = player
+    if args.player and args.cell:
+        board[args.cell - 1] = args.player
 
     print(format_board(board))
     winner = find_winner(board)

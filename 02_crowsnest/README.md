@@ -1,11 +1,13 @@
 # Crow's Nest
 
+https://www.youtube.com/playlist?list=PLhOuww6rJJNPBqIwfD-0RedqsitBliLhT
+
 Write a program that will announce the appearance of something "off the larboard bow" to the captain of the ship.
 Note that you need to "a" before a word starting with a consonant:
 
 ```
-$ ./crowsnest.py narwhall
-Ahoy, Captain, a narwhall off the larboard bow!
+$ ./crowsnest.py narwhal
+Ahoy, Captain, a narwhal off the larboard bow!
 ```
 
 Or "an" before a word starting with a vowel:

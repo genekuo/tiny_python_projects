@@ -15,19 +15,19 @@ def get_args():
         description='Telephone',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
-    parser.add_argument('text', metavar='str', help='Input text or file')
+    parser.add_argument('text', metavar='text', help='Input text or file')
 
     parser.add_argument('-s',
                         '--seed',
                         help='Random seed',
-                        metavar='int',
+                        metavar='seed',
                         type=int,
                         default=None)
 
     parser.add_argument('-m',
                         '--mutations',
                         help='Percent mutations',
-                        metavar='float',
+                        metavar='mutations',
                         type=float,
                         default=0.1)
 
@@ -49,7 +49,7 @@ def main():
     args = get_args()
     text = args.text
     random.seed(args.seed)
-    alpha = string.ascii_letters + string.punctuation
+    alpha = ''.join(sorted(string.ascii_letters + string.punctuation))
     len_text = len(text)
     num_mutations = round(args.mutations * len_text)
     new_text = text
